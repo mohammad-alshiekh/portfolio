@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0e13" />
+  <meta name="description" content="Mohamad Alshiekh — Software Engineer specializing in Flutter, full-stack development, application security, and AI-powered applications." />
+  <meta property="og:title" content="Mohamad Alshiekh | Software Engineer" />
+  <meta property="og:description" content="Flutter, full-stack engineering, application security, and AI-powered products." />
+  <meta property="og:type" content="website" />
+  <title>Mohamad Alshiekh — Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230b0e13'/%3E%3Ctext x='50' y='62' font-family='Arial' font-size='40' font-weight='700' text-anchor='middle' fill='%23c8f169'%3EMA%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #0b0e13;
+      --bg-soft: #10151d;
+      --panel: #121923;
+      --panel-2: #171f2a;
+      --line: rgba(226, 235, 245, .10);
+      --line-strong: rgba(226, 235, 245, .17);
+      --text: #f1f4f6;
+      --muted: #9aa6b4;
+      --subtle: #687585;
+      --accent: #c8f169;
+      --accent-dark: #a8d54e;
+      --blue: #8cb9ff;
+      --purple: #b7a1ff;
+      --radius: 22px;
+      --max: 1160px;
+      --shadow: 0 28px 90px rgba(0,0,0,.32);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0; color: var(--text); background: var(--bg);
+      font-family: 'DM Sans', sans-serif; line-height: 1.65; overflow-x: hidden;
+      background-image: radial-gradient(circle at 86% 4%, rgba(98,126,75,.12), transparent 25%), radial-gradient(circle at 8% 34%, rgba(79,111,160,.10), transparent 26%);
+    }
+    body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:-1; opacity:.16; background-image:linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px); background-size:56px 56px; mask-image:linear-gradient(to bottom,black,transparent 82%); }
+    a { color:inherit; text-decoration:none; }
+    button { font:inherit; }
+    .container { width:min(var(--max), calc(100% - 48px)); margin-inline:auto; }
+    .mono { font-family:'DM Mono', monospace; }
+    .eyebrow { display:flex; align-items:center; gap:10px; color:var(--accent); text-transform:uppercase; letter-spacing:.17em; font:500 11px 'DM Mono',monospace; }
+    .eyebrow::before { content:""; width:24px; height:1px; background:var(--accent); }
+    .section { padding:112px 0; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:28px; margin-bottom:38px; }
+    .section-head h2 { font:700 clamp(32px,4.4vw,52px)/1.08 'Manrope',sans-serif; letter-spacing:-.055em; margin:13px 0 0; }
+    .section-head p { color:var(--muted); max-width:420px; margin:0; font-size:14px; }
+    .accent { color:var(--accent); }
+
+    /* Navigation */
+    .site-header { position:sticky; top:0; z-index:50; border-bottom:1px solid transparent; transition:background .25s,border-color .25s; }
+    .site-header.scrolled { background:rgba(11,14,19,.84); backdrop-filter:blur(18px); border-color:var(--line); }
+    .nav { height:78px; display:flex; justify-content:space-between; align-items:center; }
+    .brand { display:flex; align-items:center; gap:12px; font:800 15px 'Manrope',sans-serif; letter-spacing:-.03em; }
+    .brand-mark { width:36px; height:36px; display:grid; place-items:center; border-radius:11px; background:var(--accent); color:#10150a; font:800 13px 'Manrope',sans-serif; box-shadow:0 0 25px rgba(200,241,105,.17); }
+    .brand small { display:block; color:var(--subtle); text-transform:uppercase; letter-spacing:.15em; font:500 9px 'DM Mono',monospace; margin-top:1px; }
+    .nav-links { display:flex; align-items:center; gap:30px; color:#b3bdc8; font-size:12px; font-weight:600; }
+    .nav-links a { transition:color .2s; }
+    .nav-links a:hover { color:var(--accent); }
+    .nav-cta { border:1px solid var(--line-strong); border-radius:999px; padding:10px 16px; color:var(--text)!important; }
+    .nav-cta:hover { border-color:var(--accent); color:var(--accent)!important; }
+    .menu-toggle { display:none; border:1px solid var(--line); color:var(--text); background:var(--panel); width:42px;height:42px;border-radius:12px; cursor:pointer; }
+
+    /* Hero */
+    .hero { min-height:690px; padding:92px 0 76px; display:flex; align-items:center; position:relative; }
+    .hero-grid { display:grid; grid-template-columns:1.12fr .88fr; align-items:center; gap:70px; }
+    .availability { display:inline-flex; align-items:center; gap:9px; padding:7px 12px; border:1px solid rgba(200,241,105,.22); background:rgba(200,241,105,.055); border-radius:999px; color:#d9eead; font:500 10px 'DM Mono',monospace; letter-spacing:.06em; }
+    .availability i { width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent); }
+    .hero h1 { font:800 clamp(49px,7.1vw,88px)/.99 'Manrope',sans-serif; letter-spacing:-.075em; margin:27px 0 22px; max-width:720px; }
+    .hero h1 span { color:var(--accent); display:block; }
+    .hero-subtitle { color:#c1cbd4; font-size:17px; max-width:570px; line-height:1.75; margin:0 0 30px; }
+    .hero-subtitle strong { color:var(--text); font-weight:600; }
+    .hero-actions { display:flex; align-items:center; flex-wrap:wrap; gap:12px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:46px; padding:0 18px; border-radius:12px; font-size:12px; font-weight:700; transition:transform .2s,background .2s,border-color .2s; cursor:pointer; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-primary { background:var(--accent); color:#11170a; box-shadow:0 10px 30px rgba(200,241,105,.12); }
+    .btn-primary:hover { background:#d6fa8c; }
+    .btn-ghost { border:1px solid var(--line-strong); color:var(--text); background:rgba(255,255,255,.02); }
+    .btn-ghost:hover { border-color:rgba(200,241,105,.55); }
+    .hero-meta { display:flex; gap:24px; margin-top:42px; flex-wrap:wrap; }
+    .meta-item { border-left:1px solid var(--line-strong); padding-left:13px; }
+    .meta-item strong { display:block; font:700 20px 'Manrope',sans-serif; letter-spacing:-.04em; }
+    .meta-item span { display:block; color:var(--subtle); font:10px 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.1em; margin-top:3px; }
+    .hero-visual { position:relative; min-height:425px; display:grid; place-items:center; }
+    .orbit { position:absolute; border:1px solid rgba(200,241,105,.10); border-radius:50%; transform:rotate(-24deg); }
+    .orbit.one { width:410px;height:280px; }
+    .orbit.two { width:480px;height:340px; transform:rotate(34deg); border-color:rgba(140,185,255,.10); }
+    .hero-card { width:min(100%,390px); position:relative; z-index:2; padding:22px; border-radius:24px; border:1px solid var(--line-strong); background:linear-gradient(145deg,rgba(28,39,51,.96),rgba(15,21,29,.94)); box-shadow:var(--shadow); transform:rotate(2deg); }
+    .card-top { display:flex;justify-content:space-between;align-items:center;padding-bottom:17px;border-bottom:1px solid var(--line); }
+    .window-dots { display:flex;gap:5px; }.window-dots i { width:6px;height:6px;border-radius:50%;background:#566271; }.window-dots i:first-child{background:#c8f169;}
+    .card-top span { color:var(--subtle);font:10px 'DM Mono',monospace; }
+    .profile-row { display:flex;align-items:center;gap:14px;padding:22px 0 18px; }
+    .avatar { width:54px;height:54px;border-radius:17px;display:grid;place-items:center;background:linear-gradient(140deg,#d8f89c,#8fb94e);color:#19210d;font:800 18px 'Manrope',sans-serif; }
+    .profile-row h3 { margin:0;font:700 17px 'Manrope',sans-serif;letter-spacing:-.04em; }
+    .profile-row p { margin:3px 0 0;color:var(--muted);font-size:11px; }
+    .code-line { display:flex;justify-content:space-between;gap:12px;color:#b1bdc9;font:10px 'DM Mono',monospace;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.045); }
+    .code-line b { color:var(--accent);font-weight:400; }
+    .signal-box { background:rgba(200,241,105,.055);border:1px solid rgba(200,241,105,.15);border-radius:14px;padding:14px;margin-top:17px; }
+    .signal-head { display:flex;justify-content:space-between;color:#d6e9b3;font:10px 'DM Mono',monospace; }
+    .signal-bars { display:flex;align-items:end;gap:5px;height:44px;margin-top:13px; }
+    .signal-bars i { flex:1;background:linear-gradient(to top,rgba(200,241,105,.23),var(--accent));border-radius:4px 4px 1px 1px;opacity:.86; }
+    .float-tag { position:absolute;z-index:3;padding:10px 13px;border:1px solid var(--line-strong);border-radius:12px;background:#141c26;box-shadow:0 14px 36px rgba(0,0,0,.3);font:10px 'DM Mono',monospace;color:#dce5eb; }
+    .float-tag.left { left:-2px;top:72px;transform:rotate(-7deg); }.float-tag.right { right:-12px;bottom:62px;transform:rotate(5deg); }
+    .float-tag em { color:var(--accent);font-style:normal; }
+    .scroll-note { position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:var(--subtle);font:9px 'DM Mono',monospace;letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:10px; }
+    .scroll-note::before { content:"";width:28px;height:1px;background:var(--subtle); }
+
+    /* Marquee */
+    .stack-strip { border-block:1px solid var(--line);background:rgba(255,255,255,.018);overflow:hidden; }
+    .stack-inner { display:flex;align-items:center;justify-content:space-between;gap:25px;min-height:76px;white-space:nowrap; }
+    .stack-label { color:var(--subtle);font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.15em; }
+    .stack-list { display:flex;flex-wrap:wrap;gap:10px; }
+    .stack-list span { color:#b5c0cb;font-size:11px;padding:7px 11px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.018); }
+
+    /* About */
+    .about-grid { display:grid;grid-template-columns:.8fr 1.2fr;gap:84px;align-items:start; }
+    .about-aside { position:sticky;top:115px; }
+    .about-aside .big-index { font:800 clamp(90px,13vw,150px)/.9 'Manrope',sans-serif;letter-spacing:-.1em;color:rgba(200,241,105,.14);margin-top:25px; }
+    .about-copy h3 { margin:0 0 17px;font:600 25px/1.35 'Manrope',sans-serif;letter-spacing:-.04em;max-width:660px; }
+    .about-copy p { color:var(--muted);font-size:14px;margin:0 0 18px;max-width:690px; }
+    .about-highlights { display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px; }
+    .highlight { padding:17px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.02); }
+    .highlight strong { display:block;font:700 21px 'Manrope',sans-serif;letter-spacing:-.05em;color:var(--accent); }
+    .highlight span { display:block;color:var(--muted);font-size:10px;margin-top:5px; }
+
+    /* Projects */
+    .projects-section { background:linear-gradient(180deg,transparent,rgba(255,255,255,.018) 22%,rgba(255,255,255,.018) 82%,transparent); }
+    .project-filters { display:flex;flex-wrap:wrap;gap:8px;margin-bottom:25px; }
+    .filter-btn { border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:8px 13px;font-size:11px;cursor:pointer;transition:.2s; }
+    .filter-btn:hover,.filter-btn.active { color:#11170a;background:var(--accent);border-color:var(--accent); }
+    .project-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px; }
+    .project-card { min-width:0;background:linear-gradient(160deg,rgba(23,32,43,.88),rgba(16,22,30,.92));border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s; }
+    .project-card:hover { transform:translateY(-5px);border-color:rgba(200,241,105,.35);box-shadow:0 22px 54px rgba(0,0,0,.24); }
+    .project-card[hidden] { display:none; }
+    .project-art { height:218px;position:relative;overflow:hidden;padding:20px;isolation:isolate; }
+    .project-art::before { content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(circle at 80% 20%,rgba(200,241,105,.12),transparent 40%),linear-gradient(135deg,#1a2830,#101820 70%); }
+    .project-art::after { content:"";position:absolute;inset:0;z-index:-1;opacity:.20;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(120deg,black,transparent 85%); }
+    .art-kicker { color:rgba(231,240,246,.62);font:9px 'DM Mono',monospace;letter-spacing:.16em;text-transform:uppercase; }
+    .art-title { font:800 23px/1.05 'Manrope',sans-serif;letter-spacing:-.06em;margin-top:7px;max-width:70%; }
+    .art-caption { color:rgba(222,232,239,.6);font:9px 'DM Mono',monospace;margin-top:8px; }
+    .mini-window { position:absolute;right:20px;bottom:17px;width:56%;height:118px;border:1px solid rgba(255,255,255,.17);border-radius:12px;background:rgba(12,19,26,.78);box-shadow:0 15px 35px rgba(0,0,0,.28);padding:10px;backdrop-filter:blur(7px); }
+    .mini-head { display:flex;gap:4px;border-bottom:1px solid rgba(255,255,255,.09);padding-bottom:7px; }
+    .mini-head i { width:5px;height:5px;border-radius:50%;background:#667685; }
+    .mini-head i:first-child { background:var(--accent); }
+    .mini-line { height:5px;border-radius:5px;background:rgba(200,213,225,.14);margin-top:8px;width:75%; }
+    .mini-line.short { width:42%; }.mini-line.green { background:rgba(200,241,105,.5);width:58%; }
+    .mini-chart { position:absolute;right:12px;bottom:12px;width:45%;height:42px; }
+    .art-waf::before { background:radial-gradient(circle at 80% 30%,rgba(200,241,105,.21),transparent 35%),linear-gradient(135deg,#1c2b31,#101820 70%); }
+    .shield { position:absolute;left:28px;bottom:23px;width:102px;height:118px;color:#c8f169;filter:drop-shadow(0 0 24px rgba(200,241,105,.20)); }
+    .art-gym::before { background:radial-gradient(circle at 20% 85%,rgba(101,191,145,.2),transparent 45%),linear-gradient(135deg,#172c2a,#101a1b 75%); }
+    .art-gym .mini-window { width:48%;height:140px;right:22px;bottom:14px; }
+    .phone-shell { position:absolute;left:34px;bottom:-30px;width:93px;height:170px;border:3px solid rgba(229,240,232,.58);border-radius:19px;background:#15221f;padding:12px 7px;box-shadow:0 15px 28px rgba(0,0,0,.35); }
+    .phone-shell::before { content:"";display:block;width:27px;height:4px;border-radius:4px;background:#52645d;margin:0 auto 12px; }
+    .phone-dot { width:30px;height:30px;border-radius:10px;background:#9fce8b;margin:8px auto; }
+    .phone-row { height:6px;border-radius:8px;background:rgba(221,239,226,.2);margin:7px 4px; }
+    .art-cmcs::before { background:radial-gradient(circle at 83% 20%,rgba(140,185,255,.23),transparent 38%),linear-gradient(135deg,#1d2b3e,#131b28 75%); }
+    .art-cmcs .mini-window { width:65%;height:135px;right:20px;bottom:17px; }
+    .stat-pills { display:flex;gap:6px;margin-top:12px; }.stat-pills i { flex:1;height:24px;border-radius:5px;background:rgba(140,185,255,.17);border:1px solid rgba(140,185,255,.2); }
+    .art-commerce::before { background:radial-gradient(circle at 20% 15%,rgba(183,161,255,.22),transparent 38%),linear-gradient(135deg,#241f3b,#141522 75%); }
+    .product-tiles { position:absolute;right:22px;bottom:20px;display:grid;grid-template-columns:repeat(3,56px);gap:7px;transform:rotate(-4deg); }
+    .product-tiles i { height:62px;border-radius:8px;background:linear-gradient(145deg,#7464a4,#2a3150);border:1px solid rgba(255,255,255,.15); }
+    .product-tiles i:nth-child(2){background:linear-gradient(145deg,#c29a74,#433344)}.product-tiles i:nth-child(3){background:linear-gradient(145deg,#7495a4,#283d52)}
+    .art-transport::before { background:radial-gradient(circle at 80% 20%,rgba(90,173,212,.25),transparent 38%),linear-gradient(135deg,#142b3a,#101a27 75%); }
+    .route-map { position:absolute;right:20px;bottom:9px;width:62%;height:160px;opacity:.95; }
+    .art-chat::before { background:radial-gradient(circle at 70% 40%,rgba(91,168,181,.2),transparent 40%),linear-gradient(135deg,#172b35,#101a22 75%); }
+    .chat-window { position:absolute;right:22px;bottom:18px;width:62%;height:132px;padding:12px;border-radius:13px;border:1px solid rgba(255,255,255,.16);background:rgba(8,17,23,.65); }
+    .bubble { height:20px;width:67%;border-radius:8px 8px 8px 2px;background:rgba(112,180,188,.28);margin:7px 0; }.bubble.right { margin-left:auto;background:rgba(200,241,105,.19);border-radius:8px 8px 2px 8px;width:55%; }
+    .art-tailor::before { background:radial-gradient(circle at 75% 20%,rgba(220,171,129,.21),transparent 38%),linear-gradient(135deg,#30251f,#171714 75%); }
+    .fabric-swatches { position:absolute;right:26px;bottom:22px;display:flex;gap:8px;transform:rotate(-8deg); }
+    .fabric-swatches i { width:42px;height:110px;border-radius:7px;background:repeating-linear-gradient(0deg,#7e6250 0 4px,#b39272 4px 6px);box-shadow:0 12px 25px #080b0d; }.fabric-swatches i:nth-child(2){background:repeating-linear-gradient(45deg,#263e3e 0 3px,#77938b 3px 5px);transform:translateY(-12px)}.fabric-swatches i:nth-child(3){background:repeating-linear-gradient(90deg,#493c50 0 5px,#a58b9c 5px 7px);transform:translateY(7px)}
+    .art-toys::before { background:radial-gradient(circle at 78% 20%,rgba(245,190,95,.22),transparent 38%),linear-gradient(135deg,#2a2922,#171a1b 75%); }
+    .toy-shapes { position:absolute;right:24px;bottom:21px;display:flex;gap:10px;align-items:end; }
+    .toy-shapes i { display:block;width:48px;height:68px;border-radius:12px 12px 10px 10px;background:linear-gradient(145deg,#e5a75b,#87502d);box-shadow:0 12px 22px rgba(0,0,0,.3); }.toy-shapes i:nth-child(2){height:92px;background:linear-gradient(145deg,#86bad1,#34596c)}.toy-shapes i:nth-child(3){height:55px;background:linear-gradient(145deg,#d7a6c4,#714d6e)}
+    .art-vault::before { background:radial-gradient(circle at 22% 22%,rgba(200,241,105,.20),transparent 36%),linear-gradient(135deg,#222b2c,#121a1b 75%); }
+    .vault-circle { position:absolute;left:30px;bottom:21px;width:112px;height:112px;border:8px solid rgba(200,241,105,.62);border-radius:50%;box-shadow:inset 0 0 0 5px rgba(200,241,105,.11),0 0 27px rgba(200,241,105,.12);display:grid;place-items:center; }
+    .vault-circle::before { content:"";width:39px;height:39px;border:3px solid #c8f169;border-radius:50%;box-shadow:0 0 0 9px rgba(200,241,105,.08); }
+    .art-todo::before { background:radial-gradient(circle at 82% 16%,rgba(140,185,255,.2),transparent 40%),linear-gradient(135deg,#1c2740,#131a2b 75%); }
+    .todo-list { position:absolute;right:25px;bottom:18px;width:59%;padding:10px;border:1px solid rgba(255,255,255,.16);background:rgba(9,16,26,.7);border-radius:12px; }
+    .todo-item { display:flex;align-items:center;gap:7px;margin:7px 0; }.todo-item i { width:9px;height:9px;border:1px solid #9dc8ff;border-radius:3px; }.todo-item:nth-child(2) i{background:#9dc8ff}.todo-item span { height:5px;width:65%;background:rgba(220,230,244,.22);border-radius:8px; }
+    .project-body { padding:22px 23px 21px; }
+    .project-overline { display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--subtle);font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em; }
+    .project-type { color:var(--accent); }
+    .project-body h3 { margin:12px 0 8px;font:700 21px/1.2 'Manrope',sans-serif;letter-spacing:-.045em; }
+    .project-body p { color:var(--muted);font-size:12px;line-height:1.75;margin:0;min-height:66px; }
+    .project-tags { display:flex;flex-wrap:wrap;gap:6px;margin-top:16px; }
+    .project-tags span { color:#b9c4cf;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:5px 8px;font:9px 'DM Mono',monospace; }
+    .project-links { display:flex;align-items:center;gap:16px;border-top:1px solid var(--line);margin-top:18px;padding-top:15px; }
+    .project-links a { color:#e5ebef;font-size:11px;font-weight:700;display:inline-flex;align-items:center;gap:7px;transition:color .2s; }
+    .project-links a:hover { color:var(--accent); }
+    .private-note { color:var(--subtle);font:9px 'DM Mono',monospace;display:inline-flex;align-items:center;gap:6px; }
+    .project-footnote { margin-top:23px;color:var(--subtle);font-size:11px; }
+
+    /* Skills */
+    .skills-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:14px; }
+    .skill-card { padding:23px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.02); }
+    .skill-icon { width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:rgba(200,241,105,.09);color:var(--accent);margin-bottom:17px; }
+    .skill-card h3 { margin:0 0 12px;font:700 15px 'Manrope',sans-serif;letter-spacing:-.03em; }
+    .skill-card p { color:var(--muted);font-size:11px;line-height:1.85;margin:0; }
+
+    /* Experience */
+    .experience-wrap { border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.018);padding:12px 28px; }
+    .experience-item { display:grid;grid-template-columns:190px 1fr;gap:42px;padding:30px 0;border-bottom:1px solid var(--line); }
+    .experience-item:last-child { border-bottom:0; }
+    .experience-date { color:var(--accent);font:10px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;padding-top:5px; }
+    .experience-main h3 { margin:0;font:700 20px 'Manrope',sans-serif;letter-spacing:-.04em; }
+    .experience-main .company { color:var(--muted);font-size:12px;margin:4px 0 13px; }
+    .experience-main ul { margin:0;padding-left:18px;color:var(--muted);font-size:12px;line-height:1.85; }
+    .experience-main li { padding-left:4px;margin:3px 0; }
+
+    /* Education/contact/footer */
+    .bottom-grid { display:grid;grid-template-columns:1fr 1fr;gap:20px; }
+    .info-panel { padding:28px;border-radius:20px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(24,34,45,.8),rgba(15,21,29,.84)); }
+    .info-panel h3 { margin:13px 0 8px;font:700 21px 'Manrope',sans-serif;letter-spacing:-.04em; }
+    .info-panel p { color:var(--muted);font-size:12px;margin:0; }
+    .cert-list { display:flex;flex-wrap:wrap;gap:8px;margin-top:18px; }
+    .cert-list span { font:10px 'DM Mono',monospace;color:#d8e2e9;border:1px solid var(--line);border-radius:8px;padding:8px 10px; }
+    .contact-section { padding:90px 0 105px; }
+    .contact-box { position:relative;overflow:hidden;border:1px solid rgba(200,241,105,.22);border-radius:26px;padding:54px;background:radial-gradient(circle at 90% 0%,rgba(200,241,105,.11),transparent 34%),linear-gradient(135deg,#17232a,#10171e 70%); }
+    .contact-box::after { content:"MA";position:absolute;right:22px;bottom:-75px;color:rgba(200,241,105,.045);font:800 250px 'Manrope',sans-serif;letter-spacing:-.12em;pointer-events:none; }
+    .contact-box h2 { position:relative;z-index:1;font:800 clamp(36px,5vw,58px)/1.06 'Manrope',sans-serif;letter-spacing:-.065em;max-width:700px;margin:15px 0; }
+    .contact-box p { position:relative;z-index:1;color:var(--muted);max-width:520px;font-size:13px;margin:0 0 26px; }
+    .contact-actions { position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:10px; }
+    footer { border-top:1px solid var(--line);padding:24px 0 32px;color:var(--subtle);font:10px 'DM Mono',monospace; }
+    .footer-inner { display:flex;justify-content:space-between;align-items:center;gap:20px; }
+    .footer-links { display:flex;gap:18px; }.footer-links a:hover{color:var(--accent)}
+    .reveal { opacity:1;transform:none;transition:opacity .65s ease,transform .65s ease; }.js-ready .reveal { opacity:0;transform:translateY(18px); }.js-ready .reveal.visible { opacity:1;transform:none; }
+
+    @media (max-width: 900px) {
+      .hero { min-height:auto;padding:80px 0 100px; }.hero-grid { grid-template-columns:1fr;gap:42px; }.hero-visual { min-height:380px; }.hero-card { width:min(100%,420px); }.hero h1 { max-width:760px; }
+      .about-grid { grid-template-columns:1fr;gap:25px; }.about-aside { position:static; }.about-aside .big-index { display:none; }
+      .skills-grid { grid-template-columns:repeat(2,1fr); }
+      .stack-inner { align-items:flex-start;justify-content:center;flex-direction:column;padding:18px 0;gap:12px; }
+    }
+    @media (max-width: 640px) {
+      .container { width:min(100% - 32px,var(--max)); }
+      .nav { height:68px; }.menu-toggle { display:grid;place-items:center; }.nav-links { display:none;position:absolute;top:68px;left:0;right:0;padding:18px 24px 22px;background:rgba(11,14,19,.97);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:16px; }.nav-links.open { display:flex; }.nav-links a { padding:5px 0; }
+      .hero { padding:65px 0 75px; }.hero h1 { font-size:clamp(45px,14vw,68px); }.hero-subtitle { font-size:14px; }.hero-meta { gap:14px;margin-top:32px; }.meta-item strong { font-size:18px; }.hero-visual { min-height:335px; }.orbit.one{width:300px;height:220px}.orbit.two{width:340px;height:260px}.hero-card{padding:17px;width:calc(100% - 18px)}.float-tag.left{left:-6px;top:36px}.float-tag.right{right:-6px;bottom:27px}
+      .section { padding:78px 0; }.section-head { display:block;margin-bottom:27px; }.section-head p { margin-top:14px; }.project-grid { grid-template-columns:1fr;gap:15px; }.project-art { height:205px; }.project-body p { min-height:0; }.skills-grid { grid-template-columns:1fr; }.about-highlights { grid-template-columns:1fr 1fr; }.experience-wrap { padding:5px 19px; }.experience-item { grid-template-columns:1fr;gap:10px;padding:23px 0; }.bottom-grid { grid-template-columns:1fr; }.contact-box { padding:34px 24px; }.contact-box::after{font-size:170px;right:8px;bottom:-50px}.footer-inner { flex-direction:column;align-items:flex-start; }.scroll-note { display:none; }
+    }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important; } .reveal { opacity:1;transform:none; } }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Mohamad Alshiekh home"><span class="brand-mark">MA</span><span>MOHAMAD ALSHIEKH<small>SOFTWARE ENGINEER</small></span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Expertise</a><a href="#experience">Experience</a><a href="#contact" class="nav-cta">Let's talk ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="availability"><i></i> OPEN TO OPPORTUNITIES · GULF & REMOTE</div>
+          <div class="eyebrow" style="margin-top:28px">SOFTWARE ENGINEER · DAMASCUS, SYRIA</div>
+          <h1>Engineering<br><span>with purpose.</span></h1>
+          <p class="hero-subtitle">I'm <strong>Mohamad Alshiekh</strong> — a software engineer building reliable mobile applications, thoughtful full-stack products, and security-focused systems. My core strength is Flutter, with hands-on experience across backend engineering, AI integration, and application security.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">Explore selected work <span>↘</span></a>
+            <a class="btn btn-ghost" href="mailto:mohamad.alshiekh23@gmail.com">Get in touch <span>↗</span></a>
+          </div>
+          <div class="hero-meta">
+            <div class="meta-item"><strong>2+ yrs</strong><span>Professional experience</span></div>
+            <div class="meta-item"><strong>873</strong><span>Exercises indexed · GYM BRO</span></div>
+            <div class="meta-item"><strong>Security+</strong><span>CompTIA · 2025</span></div>
+          </div>
+        </div>
+        <div class="hero-visual reveal" aria-label="Developer profile illustration">
+          <div class="orbit one"></div><div class="orbit two"></div>
+          <div class="float-tag left">// engineering mindset <em>✓</em></div>
+          <div class="hero-card">
+            <div class="card-top"><div class="window-dots"><i></i><i></i><i></i></div><span>mohamad.profile</span><span>● online</span></div>
+            <div class="profile-row"><div class="avatar">MA</div><div><h3>Mohamad Alshiekh</h3><p>Software Engineer / Flutter Developer</p></div></div>
+            <div class="code-line"><span>mobile.engineering</span><b>Flutter · Dart</b></div>
+            <div class="code-line"><span>backend.systems</span><b>NestJS · FastAPI</b></div>
+            <div class="code-line"><span>application.security</span><b>WAF · DDoS</b></div>
+            <div class="code-line"><span>ai.integration</span><b>RAG · LLM APIs</b></div>
+            <div class="signal-box"><div class="signal-head"><span>BUILD / IMPROVE / SECURE</span><span>ACTIVE</span></div><div class="signal-bars"><i style="height:36%"></i><i style="height:61%"></i><i style="height:48%"></i><i style="height:82%"></i><i style="height:67%"></i><i style="height:100%"></i><i style="height:76%"></i><i style="height:91%"></i><i style="height:59%"></i><i style="height:85%"></i><i style="height:71%"></i></div></div>
+          </div>
+          <div class="float-tag right">shipping practical solutions <em>↗</em></div>
+        </div>
+      </div>
+      <div class="scroll-note">SCROLL TO EXPLORE</div>
+    </section>
+
+    <div class="stack-strip"><div class="container stack-inner"><span class="stack-label">TOOLS I WORK WITH</span><div class="stack-list"><span>Flutter / Dart</span><span>Bloc / Cubit</span><span>React / Next.js</span><span>NestJS / Node.js</span><span>Python / FastAPI</span><span>Redis</span><span>Docker</span><span>ChromaDB</span></div></div></div>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-aside reveal"><div class="eyebrow">01 / ABOUT</div><div class="big-index">01</div></div>
+        <div class="about-copy reveal">
+          <h3>I enjoy working where product engineering, system design, and security meet.</h3>
+          <p>My professional experience is centered on Flutter applications across transportation, e-commerce, and enterprise communication. I build maintainable application structures with Clean Architecture and Bloc/Cubit, integrate REST APIs, and pay attention to performance and offline behavior.</p>
+          <p>Beyond mobile development, I work with React, Next.js, NestJS, and FastAPI. My project work also includes a reverse-proxy Web Application Firewall, RAG-based exercise retrieval, and multimodal meal analysis using GPT-4o.</p>
+          <p>I value clear architecture, practical problem-solving, secure implementation, and collaboration across product, design, backend, and QA teams. I am open to software engineering opportunities and relocation to the Gulf region.</p>
+          <div class="about-highlights">
+            <div class="highlight"><strong>Mobile-first</strong><span>Production Flutter apps</span></div>
+            <div class="highlight"><strong>End-to-end</strong><span>Web, APIs & data</span></div>
+            <div class="highlight"><strong>Security-aware</strong><span>Defensive engineering</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="eyebrow">02 / SELECTED WORK</div><h2>Projects with a <span class="accent">purpose.</span></h2></div><p>A selection of professional work and personal projects spanning mobile products, full-stack systems, AI integration, and application security.</p></div>
+        <div class="project-filters reveal" role="group" aria-label="Filter projects">
+          <button class="filter-btn active" data-filter="all">All projects</button>
+          <button class="filter-btn" data-filter="security">Security</button>
+          <button class="filter-btn" data-filter="ai">AI & data</button>
+          <button class="filter-btn" data-filter="fullstack">Full-stack</button>
+          <button class="filter-btn" data-filter="mobile">Mobile</button>
+          <button class="filter-btn" data-filter="professional">Professional work</button>
+        </div>
+
+        <div class="project-grid" id="projectGrid">
+          <article class="project-card reveal" data-category="security fullstack">
+            <div class="project-art art-waf"><div class="art-kicker">01 / APPLICATION SECURITY</div><div class="art-title">WAF & DDoS<br>Protection</div><div class="art-caption">TRAFFIC CONTROL · THREAT SIGNALS</div>
+              <svg class="shield" viewBox="0 0 100 120" fill="none" aria-hidden="true"><path d="M50 5 88 20v31c0 27-16 48-38 62C28 99 12 78 12 51V20L50 5Z" stroke="currentColor" stroke-width="4"/><path d="m31 58 13 13 26-29" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 17v14" stroke="currentColor" stroke-width="2" opacity=".5"/></svg>
+              <div class="mini-window"><div class="mini-head"><i></i><i></i><i></i></div><div class="mini-line green"></div><div class="mini-line"></div><div class="mini-line short"></div><svg class="mini-chart" viewBox="0 0 100 42" preserveAspectRatio="none"><path d="M0 34 13 28 24 31 36 12 48 19 60 6 72 20 84 10 100 3" fill="none" stroke="#c8f169" stroke-width="2"/><path d="M0 42V34L13 28 24 31 36 12 48 19 60 6 72 20 84 10 100 3V42Z" fill="rgba(200,241,105,.10)"/></svg></div>
+            </div>
+            <div class="project-body"><div class="project-overline"><span class="project-type">SECURITY ENGINEERING</span><span>PERSONAL PROJECT</span></div><h3>WAF & DDoS Protection System</h3><p>A reverse-proxy Web Application Firewall designed to mitigate abusive traffic using layered rate limiting, per-IP connection controls, and behavioral bot detection. Includes an attack simulator and observability dashboards.</p><div class="project-tags"><span>NestJS</span><span>Redis</span><span>Next.js</span><span>Prometheus</span><span>Grafana</span><span>Docker</span></div><div class="project-links"><a href="https://github.com/mohammad-alshiekh/WFA_DDOS_protection_system" target="_blank" rel="noopener noreferrer">GitHub repository ↗</a><a href="https://wfaddosprotectionsystem.vercel.app" target="_blank" rel="noopener noreferrer">Live demo ↗</a></div></div>
+          </article>
+
+          <article class="project-card reveal" data-category="ai mobile fullstack">
+            <div class="project-art art-gym"><div class="art-kicker">02 / AI · FITNESS TECHNOLOGY</div><div class="art-title">GYM BRO</div><div class="art-caption">TRAINING INTELLIGENCE · NUTRITION</div><div class="phone-shell"><div class="phone-dot"></div><div class="phone-row"></div><div class="phone-row" style="width:70%"></div><div class="phone-row" style="width:48%;background:rgba(200,241,105,.45)"></div></div><div class="mini-window"><div class="mini-head"><i></i><i></i><i></i></div><div class="mini-line green"></div><div class="stat-pills"><i></i><i></i><i></i></div><div class="mini-line"></div><div class="mini-line short"></div></div></div>
+            <div class="project-body"><div class="project-overline"><span class="project-type">AI-POWERED MOBILE PRODUCT</span><span>GRADUATION PROJECT · TEAM OF 5</span></div><h3>GYM BRO — AI Training & Nutrition</h3><p>A fitness platform combining AI-generated workout plans, meal tracking, coach subscriptions, and QR gym check-in. The AI service uses RAG over 873 exercises with ChromaDB and constrained structured outputs; GPT-4o Vision supports photo-based meal analysis.</p><div class="project-tags"><span>Flutter</span><span>GetX</span><span>FastAPI</span><span>ChromaDB</span><span>OpenAI</span><span>Next.js</span></div><div class="project-links"><a href="https://github.com/mohammad-alshiekh/GymPro_Dashboard" target="_blank" rel="noopener noreferrer">Public dashboard code ↗</a><a href="https://gym-pro-dashboard-nine.vercel.app" target="_blank" rel="noopener noreferrer">Dashboard demo ↗</a></div><div class="project-footnote">The linked repository is the publicly available dashboard component, not the complete mobile app and AI backend.</div></div>
+          </article>
+
+          <article class="project-card reveal" data-category="fullstack">
+            <div class="project-art art-cmcs"><div class="art-kicker">03 / CIVIC TECHNOLOGY</div><div class="art-title">Complaint<br>Management</div><div class="art-caption">MULTI-AGENCY WORKFLOW</div><div class="mini-window"><div class="mini-head"><i></i><i></i><i></i></div><div class="stat-pills"><i></i><i></i><i></i></div><div class="mini-line"></div><div class="mini-line short"></div><div class="mini-line green"></div></div></div>
+            <div class="project-body"><div class="project-overline"><span class="project-type">FULL-STACK WEB PLATFORM</span><span>PUBLIC REPOSITORY</span></div><h3>Complaint Management System (CMCS)</h3><p>A platform for managing citizen complaints across government entities. Supports role-based access, multi-role workflows, complaint lifecycle tracking, analytics dashboards, advanced filtering, and file attachments.</p><div class="project-tags"><span>Next.js</span><span>TypeScript</span><span>RBAC</span><span>Analytics</span><span>REST APIs</span></div><div class="project-links"><a href="https://github.com/mohammad-alshiekh/complaints_management" target="_blank" rel="noopener noreferrer">GitHub repository ↗</a></div></div>
+          </article>
+
+          <article class="project-card reveal" data-category="fullstack">
+            <div class="project-art art-commerce"><div class="art-kicker">04 / BACKEND ENGINEERING</div><div class="art-title">Commerce at<br>concurrency</div><div class="art-caption">ORDER FLOW · QUEUES · DATA INTEGRITY</div><div class="product-tiles"><i></i><i></i><i></i></div></div>
+            <div class="project-body"><div class="project-overline"><span class="project-type">FULL-STACK E-COMMERCE</span><span>PUBLIC REPOSITORY</span></div><h3>Concurrent E-Commerce Platform</h3><p>A full-stack commerce system exploring optimistic locking to prevent overselling, Redis-backed asynchronous queues, invoice generation, and concurrency controls for resource-intensive operations.</p><div class="project-tags"><span>NestJS</span><span>Next.js</span><span>MySQL</span><span>Redis</span><span>Bull</span><span>TypeORM</span></div><div class="project-links"><a href="https://github.com/mohammad-alshiekh/parallel-programming-" target="_blank" rel="noopener noreferrer">GitHub repository ↗</a></div></div>
+          </article>
+
+          <article class="project-card reveal" data-category="mobile professional">
+            <div class="project-art art-transport"><div class="art-kicker">05 / TRANSPORTATION</div><div class="art-title">Safferny</div><div class="art-caption">TRIP BOOKING · LIVE LOCATION</div><svg class="route-map" viewBox="0 0 250 160" fill="none" aria-hidden="true"><path d="M-5 30 48 40 76 12 116 45 155 36 196 75 250 60M-5 118 42 100 78 125 120 92 161 110 196 75 250 112" stroke="rgba(180,210,225,.16)" stroke-width="2"/><path d="M28 124C60 100 65 68 111 73S163 122 208 44" stroke="#8cb9ff" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 6"/><circle cx="28" cy="124" r="7" fill="#c8f169"/><circle cx="208" cy="44" r="7" fill="#8cb9ff"/><circle cx="111" cy="73" r="4" fill="#fff"/></svg></div>
+            <div class="project-body"><div class="project-overline"><span class="project-type">PROFESSIONAL EXPERIENCE</span><span>LAYER COMPANY</span></div><h3>Safferny — Transportation Platform</h3><p>Trip-booking and transportation workflows covering driver and route management, real-time location tracking, map integration, and offline-first functionality. Built with Clean Architecture and Bloc/Cubit, using Hive for local persistence.</p><div class="project-tags"><span>Flutter</span><span>Bloc / Cubit</span><span>Hive</span><span>Maps</span></div><div class="project-links"><span class="private-note">▣ Professional project · Source not public</span></div></div>
+          </article>
+
+          <article class="project-card reveal" data-category="mobile professional">
+            <div class="project-art art-chat"><div class="art-kicker">06 / ENTERPRISE COMMUNICATION</div><div class="art-title">Cryomain<br>Chat</div><div class="art-caption">SECURE TEAM COMMUNICATION</div><div class="chat-window"><div class="mini-head"><i></i><i></i><i></i></div><div class="bubble"></div><div class="bubble right"></div><div class="bubble" style="width:49%"></div><div class="bubble right" style="width:42%"></div></div></div>
+            <div class="project-body"><div class="project-overline"><span class="project-type">PROFESSIONAL EXPERIENCE</span><span>B-WIRE</span></div><h3>Cryomain Chat</h3><p>A secure internal communication application for the air separation and cryogenic industries. Delivered messaging, secure file sharing, user management, and inter-department collaboration with data security controls.</p><div class="project-tags"><span>Flutter</span><span>REST APIs</span><span>Enterprise Messaging</span></div><div class="project-links"><span class="private-note">▣ Professional project · Source not public</span></div></div>
+          </article>
+
+          <article class="project-card reveal" data-category="mobile professional">
+            <div class="project-art art-tailor"><div class="art-kicker">07 / DIGITAL COMMERCE</div><div class="art-title">Sakba</div><div class="art-caption">CUSTOM TAILORING · ORDER EXPERIENCE</div><div class="fabric-swatches"><i></i><i></i><i></i></div></div>
+            <div class="project-body"><div class="project-overline"><span class="project-type">PROFESSIONAL EXPERIENCE</span><span>B-WIRE</span></div><h3>Sakba — Digital Tailoring</h3><p>A digital platform modernizing traditional dishdasha tailoring. Customers can choose fabrics, customize garment specifications, and manage orders online through an end-to-end ordering experience.</p><div class="project-tags"><span>Flutter</span><span>REST APIs</span><span>Clean Architecture</span><span>TDD</span></div><div class="project-links"><span class="private-note">▣ Professional project · Source not public</span></div></div>
+          </article>
+
+          <article class="project-card reveal" data-category="fullstack professional">
+            <div class="project-art art-toys"><div class="art-kicker">08 / ONLINE RETAIL</div><div class="art-title">Toys-101</div><div class="art-caption">DISCOVER · CART · CHECKOUT</div><div class="toy-shapes"><i></i><i></i><i></i></div></div>
+            <div class="project-body"><div class="project-overline"><span class="project-type">E-COMMERCE PROJECT</span><span>ADDITIONAL WORK</span></div><h3>Toys-101 — E-Commerce</h3><p>An online shopping platform supporting product discovery, cart management, order placement, and secure online payments, with an emphasis on a straightforward shopping journey.</p><div class="project-tags"><span>E-Commerce</span><span>Payments</span><span>Shopping Cart</span></div><div class="project-links"><span class="private-note">▣ Project details from CV · No public repo linked</span></div></div>
+          </article>
+
+          <article class="project-card reveal" data-category="mobile security">
+            <div class="project-art art-vault"><div class="art-kicker">09 / PRIVACY & SECURITY</div><div class="art-title">Secure Vault</div><div class="art-caption">LOCAL ENCRYPTION · PRIVATE DATA</div><div class="vault-circle"></div><div class="mini-window" style="width:45%;height:105px;right:20px;bottom:18px"><div class="mini-head"><i></i><i></i><i></i></div><div class="mini-line green"></div><div class="mini-line"></div><div class="mini-line short"></div></div></div>
+            <div class="project-body"><div class="project-overline"><span class="project-type">FLUTTER SIDE PROJECT</span><span>PUBLIC REPOSITORY</span></div><h3>Secure Vault — Password Manager</h3><p>A Flutter password manager documented with encrypted local storage, AES-256-GCM, secure key storage, biometric verification, and a privacy-focused offline design. Security claims should be assessed against the implementation, not the README alone.</p><div class="project-tags"><span>Flutter</span><span>BLoC / Cubit</span><span>Hive</span><span>AES-256-GCM</span><span>Secure Storage</span></div><div class="project-links"><a href="https://github.com/mohammad-alshiekh/secure_vault" target="_blank" rel="noopener noreferrer">GitHub repository ↗</a></div></div>
+          </article>
+
+          <article class="project-card reveal" data-category="mobile">
+            <div class="project-art art-todo"><div class="art-kicker">10 / PRODUCTIVITY</div><div class="art-title">ToDoAlp</div><div class="art-caption">TASKS · ROUTINES · INSIGHTS</div><div class="todo-list"><div class="todo-item"><i></i><span></span></div><div class="todo-item"><i></i><span></span></div><div class="todo-item"><i></i><span></span></div><div class="todo-item"><i></i><span></span></div></div></div>
+            <div class="project-body"><div class="project-overline"><span class="project-type">FLUTTER SIDE PROJECT</span><span>PUBLIC REPOSITORY</span></div><h3>ToDoAlp — Task Workspace</h3><p>A Flutter productivity application with task creation and editing, priority and category management, local persistence, notifications, search, filters, and progress analytics.</p><div class="project-tags"><span>Flutter</span><span>Dart</span><span>GetX</span><span>Hive</span><span>Local Notifications</span></div><div class="project-links"><a href="https://github.com/mohammad-alshiekh/ToDoApp" target="_blank" rel="noopener noreferrer">GitHub repository ↗</a></div></div>
+          </article>
+        </div>
+        <p class="project-footnote">Project artwork on this page is custom illustrative UI artwork, not a screenshot of the production applications. Public repository links are provided where available; professional projects without public code are identified accordingly.</p>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="eyebrow">03 / TECHNICAL EXPERTISE</div><h2>Tools for building<br><span class="accent">better systems.</span></h2></div><p>A balanced toolkit across client applications, backend services, secure engineering, observability, and AI integration.</p></div>
+        <div class="skills-grid">
+          <div class="skill-card reveal"><div class="skill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="2.5" width="12" height="19" rx="2"/><path d="M10 18.5h4"/></svg></div><h3>Mobile Engineering</h3><p>Flutter, Dart, Bloc, Cubit, GetX, Dio, Firebase, Hive, SQLite, REST APIs, offline-first architecture.</p></div>
+          <div class="skill-card reveal"><div class="skill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Web & Backend</h3><p>React, Next.js, TypeScript, Node.js, NestJS, Express, Python, FastAPI, RESTful service design.</p></div>
+          <div class="skill-card reveal"><div class="skill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Application Security</h3><p>WAF design, DDoS mitigation, rate limiting, bot detection, JWT, RBAC, secure coding, vulnerability assessment.</p></div>
+          <div class="skill-card reveal"><div class="skill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1"/><circle cx="12" cy="12" r="5"/></svg></div><h3>AI & LLM Integration</h3><p>RAG, ChromaDB, semantic search, OpenAI and Claude APIs, structured outputs, multimodal integration.</p></div>
+          <div class="skill-card reveal"><div class="skill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div><h3>Data & Infrastructure</h3><p>Redis, MySQL, MongoDB, SQLite, Docker, Prometheus, Grafana, Git, GitHub.</p></div>
+          <div class="skill-card reveal"><div class="skill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m4 17 6-6 4 4 6-8"/><path d="M14 7h6v6"/></svg></div><h3>Engineering Practices</h3><p>Clean Architecture, SOLID, design patterns, dependency injection, TDD, unit testing, Agile collaboration.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="eyebrow">04 / EXPERIENCE</div><h2>Where I've<br><span class="accent">contributed.</span></h2></div><p>Professional experience building production Flutter applications and collaborating with cross-functional engineering teams.</p></div>
+        <div class="experience-wrap reveal">
+          <div class="experience-item"><div class="experience-date">APR 2025 — SEP 2025</div><div class="experience-main"><h3>Flutter Developer</h3><div class="company">Layer Company · Transportation & trip-management products</div><ul><li>Built trip booking, driver and route management workflows, including real-time location tracking and map integration.</li><li>Applied Clean Architecture and Bloc/Cubit; implemented offline-first persistence with Hive.</li><li>Profiled and optimized application performance and mentored junior developers through code reviews.</li></ul></div></div>
+          <div class="experience-item"><div class="experience-date">APR 2023 — JUN 2024</div><div class="experience-main"><h3>Flutter Developer</h3><div class="company">B-wire · Enterprise communication & digital commerce</div><ul><li>Built Cryomain Chat features for enterprise messaging, secure file sharing, user management, and interdepartmental collaboration.</li><li>Developed Sakba workflows for fabric selection, garment customization, and online order management.</li><li>Integrated REST APIs, applied Clean Architecture and TDD, and collaborated with design, backend, and QA teams.</li></ul></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="eyebrow">05 / EDUCATION & CREDENTIALS</div><h2>Learning is part<br><span class="accent">of the work.</span></h2></div></div>
+        <div class="bottom-grid">
+          <div class="info-panel reveal"><div class="eyebrow">EDUCATION</div><h3>B.Sc. in Information Technology Engineering and Computer Science</h3><p>Damascus University · Damascus, Syria</p></div>
+          <div class="info-panel reveal"><div class="eyebrow">CERTIFICATIONS & LANGUAGES</div><h3>Credentials</h3><p>CompTIA Security+ (2025) · Huawei Certified ICT Associate — HCIA (2024)</p><div class="cert-list"><span>ARABIC · NATIVE</span><span>ENGLISH · B2</span><span>OPEN TO GULF RELOCATION</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container"><div class="contact-box reveal"><div class="eyebrow">06 / CONTACT</div><h2>Have a meaningful problem to solve?</h2><p>I'm interested in software engineering opportunities where I can contribute to mobile products, full-stack systems, and secure application development.</p><div class="contact-actions"><a class="btn btn-primary" href="mailto:mohamad.alshiekh23@gmail.com">Email me ↗</a><a class="btn btn-ghost" href="tel:+963962451848">+963 962 451 848</a><a class="btn btn-ghost" href="https://github.com/mohammad-alshiekh" target="_blank" rel="noopener noreferrer">GitHub profile ↗</a></div></div></div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><span>© <span id="year">2026</span> MOHAMAD ALSHIEKH · BUILT WITH INTENTION.</span><div class="footer-links"><a href="#top">Back to top ↑</a><a href="mailto:mohamad.alshiekh23@gmail.com">Email</a><a href="https://github.com/mohammad-alshiekh" target="_blank" rel="noopener noreferrer">GitHub</a></div></div></footer>
+
+  <script>
+    document.documentElement.classList.add('js-ready');
+    // Mobile navigation
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    // Compact header on scroll
+    const header = document.querySelector('.site-header');
+    const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 20);
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+
+    // Project filters
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    filterButtons.forEach(button => button.addEventListener('click', () => {
+      filterButtons.forEach(item => item.classList.remove('active'));
+      button.classList.add('active');
+      const filter = button.dataset.filter;
+      projectCards.forEach(card => {
+        const categories = card.dataset.category.split(' ');
+        card.hidden = filter !== 'all' && !categories.includes(filter);
+      });
+    }));
+
+    // Reveal sections as they enter the viewport (with reduced-motion fallback)
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.10 });
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('visible'));
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
